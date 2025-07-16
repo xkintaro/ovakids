@@ -25,29 +25,6 @@
     gap: 0.5rem;
 }
 
-.kintaro-navbar-links {
-    display: flex;
-    align-items: center;
-    gap: var(--kintaro-gap-md);
-}
-
-.kintaro-navbar-links-item {
-    color: var(--kintaro-text-color-2);
-    font-size: var(--kintaro-font-sm);
-    transition: var(--kintaro-transition-1);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-}
-
-.kintaro-navbar-links-item:hover {
-    color: var(--kintaro-text-color-1);
-}
-
-.kintaro-navbar-links-item.active-link {
-    color: var(--kintaro-text-color-1);
-}
-
 @media (max-width: 768px) {
     .kintaro-navbar-links {
         display: none;

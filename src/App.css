@@ -1,6 +1,10 @@
 :root {
-    --navbar-height: 70px;
+    --navbar-height: 60px;
     --navbar-z-index: 900;
+}
+
+body {
+    min-height: 2000px;
 }
 
 .kintaro-xahzy {
@@ -45,8 +49,6 @@
     min-height: 100dvh;
 }
 
-
-
 .kintaro-ui-hero {
     width: 100%;
     min-height: 100dvh;
@@ -55,6 +57,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: var(--kintaro-gap-md);
 }
 
 .kintaro-ui-hero::after {
@@ -79,6 +82,8 @@
 
 .kwherobtns {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--kintaro-gap-xs);
     margin-top: var(--kintaro-gap-xs);
     width: fit-content;
@@ -89,14 +94,22 @@
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, rgba(0, 0, 0, 0.1), rgb(0, 0, 0, 0.5));
-    z-index: -2;
+    z-index: -3;
+}
+
+.hero-overlay-mascot {
+    position: absolute;
+    left: -230px;
+    width: 500px;
+    height: fit-content;
+    z-index: -1;
+    top: 350px;
 }
 
 .hero-overlay-mini-image {
     position: absolute;
-    width: 150px;
     height: fit-content;
-    z-index: -1;
+    z-index: -2;
     opacity: 0.5;
     object-fit: cover;
 }
@@ -105,51 +118,54 @@
     left: 15%;
     top: 15%;
     transform: rotate(-15deg);
+    width: 200px;
 }
 
 .hero2 {
     right: 10%;
     transform: rotate(15deg);
+    width: 200px;
 }
 
 .hero3 {
     right: 30%;
     bottom: 10%;
+    width: 180px;
 }
 
 @media (max-width: 768px) {
-    .kintaro-container {
-        padding-bottom: var(--navbar-height);
-    }
 
     .kintaro-xahzy {
         min-height: calc(100vh - calc(var(--navbar-height) * 2));
     }
 
-    .hero-overlay-mini-image {
-        width: 120px;
+    .hero-overlay-mascot {
+        display: none;
     }
 
     .hero1 {
         left: 10%;
         top: 15%;
+        width: 120px;
     }
 
     .hero2 {
         right: 10%;
+        width: 120px;
     }
 
     .hero3 {
         right: 50%;
         bottom: 5%;
+        width: 120px;
     }
 }
 
 .scroll-down-container {
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
-    bottom: 2rem;
+    bottom: 4rem;
     margin-left: auto;
     margin-right: auto;
     display: flex;

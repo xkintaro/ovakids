@@ -14,12 +14,12 @@ import Search from './KintaroNavbarSearch'
 import ProfileMenu from './KintaroNavbarProfileMenu'
 import './kintaroNavbar.css'
 
-import routes from '../routes.json';  
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+
 
 function KintaroNavbar() {
-    const location = useLocation();
+   
 
     return (
         <div className="kintaro-navbar">
@@ -27,20 +27,7 @@ function KintaroNavbar() {
                 <KintaroTitle1 title={"OvaKids"} />
             </Link>
 
-            <div className="kintaro-navbar-links">
-                {routes.map((route, index) => (
-                    <Link
-                        key={index}
-                        to={`/${BASE_URL}/${route.url}`}
-                        className={`kintaro-navbar-links-item ${location.pathname === `/${BASE_URL}/${route.url}` ||
-                            (route.url === 'home' && location.pathname === '/')
-                            ? 'active-link' : ''
-                            }`}
-                    >
-                        {route.title}
-                    </Link>
-                ))}
-            </div>
+           
 
             <div className="kintaro-navbar-right">
                 <Search />
