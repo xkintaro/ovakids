@@ -48,8 +48,6 @@ function App() {
       <div className="kintaro-container">
         <Routes>
           <Route path="/" element={<Home />} />
-
-
           <Route path={`/${BASE_URL}/under-construction`} element={<UnderConstructionPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

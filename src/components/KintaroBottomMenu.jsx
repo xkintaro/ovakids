@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaEllipsisH } from "react-icons/fa";
+import { FaHome, FaFolder } from "react-icons/fa";
+import { MdWavingHand } from "react-icons/md";
+
 import './kintaroBottommenu.css';
 import routes from '../routes.json';
 
@@ -12,10 +14,12 @@ function KintaroBottomMenu() {
     const moreButtonRef = useRef(null);
     const menuRef = useRef(null);
 
-    // Menüleri işliyoruz (ikon varsa ekle, yoksa boş bırak)
-    const menuItems = routes.map(item => ({
+    // Sabit ikonlar (sıralamaya göre eşleşiyor)
+    const staticIcons = [<FaHome />, <MdWavingHand />, <FaFolder />];
+
+    const menuItems = routes.map((item, index) => ({
         path: `/${BASE_URL}/${item.url}`,
-        icon: item.icon, // string olarak bırakıyoruz, bileşen değil
+        icon: staticIcons[index] || null,
         text: item.title
     }));
 
@@ -40,51 +44,44 @@ function KintaroBottomMenu() {
     }, []);
 
     return (
-        <>
-            <div className="kintaro-bottom-menu">
-                {visibleItems.map((item, index) => (
+        <div className="kintaro-bottom-menu">
+            {visibleItems.map((item, i) => (
+                <Link
+                    key={i}
+                    to={item.path}
+                    className={`kintaro-bottom-menu-item ${location.pathname === item.path ? 'active' : ''}`}
+                >
+                    {item.icon}
+                </Link>
+            ))}
+
+            {moreItems.length > 0 && (
+                <button
+                    ref={moreButtonRef}
+                    className={`kintaro-bottom-menu-item kintaro-bottom-more-button ${showMoreMenu ? 'active' : ''}`}
+                    onClick={() => setShowMoreMenu(!showMoreMenu)}
+                >
+                    <FaEllipsisH className='kintaro-bottom-menu-icon' />
+                </button>
+            )}
+
+            <div
+                className={`kintaro-bottom-more-menu ${showMoreMenu ? 'visible' : ''}`}
+                ref={menuRef}
+            >
+                {moreItems.map((item, i) => (
                     <Link
-                        key={index}
+                        key={i}
                         to={item.path}
-                        className={`kintaro-bottom-menu-item ${location.pathname === item.path ? 'active' : ''}`}
+                        className="kintaro-bottom-more-item"
+                        onClick={() => setShowMoreMenu(false)}
                     >
-                        {/* Eğer ikon bileşeni varsa göster */}
-                        {item.icon && typeof item.icon === 'string' && (
-                            <span className="kintaro-bottom-icon">{item.icon}</span>
-                        )}
+                        {item.icon && <span className='kintaro-bottom-more-icon'>{item.icon}</span>}
+                        <span className="kintaro-bottom-more-text">{item.text}</span>
                     </Link>
                 ))}
-
-                {moreItems.length > 0 && (
-                    <button
-                        ref={moreButtonRef}
-                        className={`kintaro-bottom-menu-item kintaro-bottom-more-button ${showMoreMenu ? 'active' : ''}`}
-                        onClick={() => setShowMoreMenu(!showMoreMenu)}
-                    >
-                        <FaEllipsisH className='kintaro-bottom-menu-icon' />
-                    </button>
-                )}
-
-                <div
-                    className={`kintaro-bottom-more-menu ${showMoreMenu ? 'visible' : ''}`}
-                    ref={menuRef}
-                >
-                    {moreItems.map((item, index) => (
-                        <Link
-                            key={index}
-                            to={item.path}
-                            className="kintaro-bottom-more-item"
-                            onClick={() => setShowMoreMenu(false)}
-                        >
-                            {item.icon && typeof item.icon === 'string' && (
-                                <span className="kintaro-bottom-more-icon">{item.icon}</span>
-                            )}
-                            <span className="kintaro-bottom-more-text">{item.text}</span>
-                        </Link>
-                    ))}
-                </div>
             </div>
-        </>
+        </div>
     );
 }
 

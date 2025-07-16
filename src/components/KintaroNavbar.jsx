@@ -14,7 +14,7 @@ import Search from './KintaroNavbarSearch'
 import ProfileMenu from './KintaroNavbarProfileMenu'
 import './kintaroNavbar.css'
 
-import routes from '../routes.json'; // <-- JSON içe aktarıldı
+import routes from '../routes.json';  
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
