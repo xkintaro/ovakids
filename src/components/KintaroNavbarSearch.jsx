@@ -73,7 +73,7 @@ function KintaroNavbarSearch() {
     return (
         <>
             {isMobile && overlayActive && (
-                <div className="kintaro-overlay">
+                <div className="kintaro-overlay" onClick={closeOverlay}>
                     {renderSearchBar()}
                 </div>
             )}

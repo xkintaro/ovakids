@@ -1,0 +1,17 @@
+[
+    {
+        "title": "AnaSayfa",
+        "url": "home",
+        "icon": "<FaHome />"
+    },
+    {
+        "title": "Hakkımızda",
+        "url": "about",
+        "icon": ""
+    },
+    {
+        "title": "Ürünlerimiz",
+        "url": "products",
+        "icon": ""
+    }
+]

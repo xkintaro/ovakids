@@ -40,25 +40,17 @@ function KintaroNavbarProfileMenu() {
                 role="menu"
                 aria-hidden={!isMenuVisible}
             >
-                <Link to="/profile" className="kintaro-profile-item" onClick={() => setIsMenuVisible(false)}>
+                <Link to="/" className="kintaro-profile-item" onClick={() => setIsMenuVisible(false)}>
                     <FaUser />
-                    Profilim
+                    Undefined
                 </Link>
-                <Link to="/register" className="kintaro-profile-item" onClick={() => setIsMenuVisible(false)}>
+                <Link to="/" className="kintaro-profile-item" onClick={() => setIsMenuVisible(false)}>
                     <FaUser />
-                    Register
+                      Undefined
                 </Link>
-                <Link to="/login" className="kintaro-profile-item" onClick={() => setIsMenuVisible(false)}>
+                <Link to="/" className="kintaro-profile-item" onClick={() => setIsMenuVisible(false)}>
                     <FaUser />
-                    Login
-                </Link>
-                <Link to="/settings" className="kintaro-profile-item" onClick={() => setIsMenuVisible(false)}>
-                    <FaCog />
-                    Ayarlar
-                </Link>
-                <Link to="/logout" className="kintaro-profile-item" onClick={() => setIsMenuVisible(false)}>
-                    <FaSignOutAlt />
-                    Çıkış Yap
+                      Undefined
                 </Link>
             </div>
         </div>

@@ -61,10 +61,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh;
     background: var(--kintaro-color-1);
     display: flex;
-    padding: var(--kintaro-spacing-content-md);
+    padding: var(--kintaro-gap-md);
     align-items: self-start;
     z-index: 1000;
 }
@@ -72,6 +72,6 @@
 @media (max-width: 768px) {
     .kintaro-search-bar-container {
         max-width: 100%;
-        padding: var(--kintaro-spacing-content-sm);
+        padding: var(--kintaro-gap-sm);
     }
 }

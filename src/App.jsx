@@ -14,10 +14,13 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import './App.css'
 
 import Navbar from './components/KintaroNavbar'
+import BottomMenu from './components/KintaroBottomMenu'
 
 import NotFoundPage from './pages/KintaroNotFound'
 import UnderConstructionPage from './pages/KintarouUnderConstruction'
 import Home from './pages/KintaroHome'
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -39,14 +42,15 @@ function App() {
 
       <ScrollToTop />
 
-  
+      <Navbar />
+      <BottomMenu />
 
       <div className="kintaro-container">
         <Routes>
           <Route path="/" element={<Home />} />
 
 
-          <Route path="/under-construction" element={<UnderConstructionPage />} />
+          <Route path={`/${BASE_URL}/under-construction`} element={<UnderConstructionPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
@@ -54,5 +58,5 @@ function App() {
     </Router>
   )
 }
-
+{/*`/${BASE_URL}/`*/ }
 export default App

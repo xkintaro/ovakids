@@ -18,13 +18,13 @@
 }
 
 .kintaro-profile-menu {
-    right: var(--kintaro-spacing-content-sm);
+    right: var(--kintaro-gap-sm);
     background: var(--kintaro-color-3);
-    padding: var(--kintaro-spacing-content-xs);
+    padding: var(--kintaro-gap-xs);
     box-shadow: var(--kintaro-box-shadow);
     visibility: hidden;
     position: absolute;
-    top: calc(100% + var(--kintaro-spacing-content-sm));
+    top: calc(100% + var(--kintaro-gap-sm));
     transform: translateY(-10px);
     transition: var(--kintaro-transition-1);
     z-index: 1000;

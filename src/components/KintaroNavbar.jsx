@@ -9,52 +9,43 @@ import {
     KintaroDivider1, KintaroAudioPlayer
 } from 'kintaro-ui/src';
 
+import Logo from '/ovakidslogo.png'
 import Search from './KintaroNavbarSearch'
 import ProfileMenu from './KintaroNavbarProfileMenu'
 import './kintaroNavbar.css'
 
-function KintaroNavbar() {
+import routes from '../routes.json'; // <-- JSON içe aktarıldı
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+function KintaroNavbar() {
     const location = useLocation();
 
     return (
         <div className="kintaro-navbar">
-
             <Link to="/" title='Anasayfa'>
-                <KintaroTitle1 title={"title"} />
+                <KintaroTitle1 title={"OvaKids"} />
             </Link>
 
             <div className="kintaro-navbar-links">
-
-                <Link
-                    to="/home"
-                    className={`kintaro-navbar-links-item ${location.pathname === '/home' || location.pathname === '/' ? 'active-link' : ''
-                        }`}
-                >
-                    Home
-                </Link>
-
-                <Link to="/explore" className={`kintaro-navbar-links-item ${location.pathname === '/explore' ? 'active-link' : ''}`}>
-                    Explore
-                </Link>
-
-                <Link to="/about" className={`kintaro-navbar-links-item ${location.pathname === '/about' ? 'active-link' : ''}`}>
-                    About
-                </Link>
-
-                <Link to="/settings" className={`kintaro-navbar-links-item ${location.pathname === '/settings' ? 'active-link' : ''}`}>
-                    Settings
-                </Link>
-
+                {routes.map((route, index) => (
+                    <Link
+                        key={index}
+                        to={`/${BASE_URL}/${route.url}`}
+                        className={`kintaro-navbar-links-item ${location.pathname === `/${BASE_URL}/${route.url}` ||
+                            (route.url === 'home' && location.pathname === '/')
+                            ? 'active-link' : ''
+                            }`}
+                    >
+                        {route.title}
+                    </Link>
+                ))}
             </div>
 
             <div className="kintaro-navbar-right">
-
                 <Search />
                 <ProfileMenu />
-
             </div>
-
         </div>
     );
 }
