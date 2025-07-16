@@ -1,4 +1,3 @@
-import 'kintaro-ui/src/root.css';
 import {
   KintaroTitle1, KintaroTitle2, KintaroTitle3,
   KintaroTextBox1, KintaroTextBox2, KintaroTextBox3,
@@ -7,6 +6,7 @@ import {
   KintaroDescription, KintaroModal, KintaroFooter,
   KintaroDivider1, KintaroAudioPlayer
 } from 'kintaro-ui/src';
+import 'kintaro-ui/src/root.css';
 
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
@@ -46,11 +46,21 @@ function App() {
       <BottomMenu />
 
       <div className="kintaro-container">
+
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path={`/${BASE_URL}/home`} element={<Home />} />
           <Route path={`/${BASE_URL}/under-construction`} element={<UnderConstructionPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+
+
+
+        <div className="scroll-down-container">
+          <p className="scroll-down-text">Scroll Down</p>
+          <div className="scroll-down-arrow">
+            <div className="scroll-down-dot"></div>
+          </div>
+        </div>
       </div>
 
     </Router>

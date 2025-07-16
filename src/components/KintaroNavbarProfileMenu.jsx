@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUser, FaFolder } from "react-icons/fa";
+import { FaHome, FaFolder, FaPhone } from "react-icons/fa";
 import { MdWavingHand } from "react-icons/md";
 
 import './kintaroNavbarProfileMenu.css';
@@ -35,10 +35,9 @@ function KintaroNavbarProfileMenu() {
     }, []);
 
     // Sabit ikonlar: sıralamaya göre routes.json’dakiyle eşleşir
-    const staticIcons = [<FaUser />, <MdWavingHand />, <FaFolder />];
+    const staticIcons = [<FaHome />, <MdWavingHand />, <FaFolder />, <FaPhone />];
 
-    // İlk 3 menü öğesini al (navbar için 3 yeterli)
-    const menuItems = routes.slice(0, 3).map((item, index) => ({
+    const menuItems = routes.map((item, index) => ({
         path: `/${BASE_URL}/${item.url}`,
         icon: staticIcons[index] || null,
         text: item.title
@@ -46,7 +45,7 @@ function KintaroNavbarProfileMenu() {
 
     return (
         <div className="kintaro-profile" ref={profileRef}>
-            <FaUser
+            <FaHome
                 className="kintaro-profile-button"
                 onClick={handleToggleMenu}
                 role="button"

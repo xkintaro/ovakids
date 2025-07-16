@@ -4,11 +4,15 @@
         "url": "home"
     },
     {
+        "title": "Ürünlerimiz",
+        "url": "products"
+    },
+    {
         "title": "Hakkımızda",
         "url": "about"
     },
     {
-        "title": "Ürünlerimiz",
-        "url": "products"
+        "title": "İletişim",
+        "url": "contact"
     }
 ]

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaFolder } from "react-icons/fa";
+import { FaHome, FaFolder, FaPhone, FaEllipsisH } from "react-icons/fa";
 import { MdWavingHand } from "react-icons/md";
 
 import './kintaroBottommenu.css';
@@ -15,7 +15,7 @@ function KintaroBottomMenu() {
     const menuRef = useRef(null);
 
     // Sabit ikonlar (sıralamaya göre eşleşiyor)
-    const staticIcons = [<FaHome />, <MdWavingHand />, <FaFolder />];
+    const staticIcons = [<FaHome />, <MdWavingHand />, <FaFolder />, <FaPhone />];
 
     const menuItems = routes.map((item, index) => ({
         path: `/${BASE_URL}/${item.url}`,
