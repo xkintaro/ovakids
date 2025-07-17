@@ -12,6 +12,8 @@ import {
 import Hero from '../components/KintaroHero'
 
 import { KintaroContentBox1 } from "../components/KintaroContentBox";
+import KintaroComments from "../components/KintaroComments";
+
 import Logo from '/ovakidslogo.png'
 import Mayushii from '/mayushii.png'
 import CutsEffectOverlay from '/cuts-effect.png'
@@ -130,8 +132,10 @@ function KintaroHome() {
         <img src={Logo} alt="ovakids logo" className="kintaro-about-image" />
 
       </div>
+      <KintaroDivider1 />
+      <KintaroComments />
 
-
+      <KintaroDivider1 />
 
     </div>
   )
