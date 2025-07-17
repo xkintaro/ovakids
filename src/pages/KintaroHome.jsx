@@ -16,7 +16,7 @@ import KintaroComments from "../components/KintaroComments";
 
 import Logo from '/ovakidslogo.png'
 import Mayushii from '/mayushii.png'
-import CutsEffectOverlay from '/cuts-effect.png'
+ 
 import { FaArrowRight } from "react-icons/fa";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
