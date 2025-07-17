@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react';
 
 import {
   KintaroTitle1, KintaroTitle2, KintaroTitle3,
@@ -9,48 +9,101 @@ import {
   KintaroDivider1, KintaroAudioPlayer
 } from 'kintaro-ui/src';
 
-import overlay from '/2.png'
-import mascot from '/mascot.png'
-import hero1 from '/hero/001.png'
-import hero2 from '/hero/002.png'
-import hero3 from '/hero/003.png'
+import Hero from '../components/KintaroHero'
+
+import { KintaroContentBox1 } from "../components/KintaroContentBox";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 
 function KintaroHome() {
+
+  const contentsRef = useRef(null);
+
+  const contents = [
+    {
+      id: 1,
+      image: `/${BASE_URL}/clothes/001.png`,
+      title: "Tatlı Ayıcıklı Çocuk Kıyafeti",
+      price: 400,
+      redirectLink: `/${BASE_URL}/content-page`
+    },
+    {
+      id: 2,
+      image: `/${BASE_URL}/clothes/002.png`,
+      title: "Dinazorlu Çocuk Kıyafeti",
+      price: 300,
+      redirectLink: `/${BASE_URL}/content-page`
+    },
+    {
+      id: 3,
+      image: `/${BASE_URL}/clothes/003.png`,
+      title: "Renkli Arabalı Çocuk Kıyafeti",
+      price: 280,
+      redirectLink: `/${BASE_URL}/content-page`
+    },
+    {
+      id: 4,
+      image: `/${BASE_URL}/clothes/004.png`,
+      title: "Bebek Filli Çocuk Kıyafeti",
+      price: 360,
+      redirectLink: `/${BASE_URL}/content-page`
+    },
+    {
+      id: 5,
+      image: `/${BASE_URL}/clothes/005.png`,
+      title: "Sevimli Bereli Çocuk Kıyafeti",
+      price: 410,
+      redirectLink: `/${BASE_URL}/content-page`
+    },
+    {
+      id: 6,
+      image: `/${BASE_URL}/clothes/006.png`,
+      title: "Ayıkıcılı Rahat Çocuk Kıyafeti",
+      price: 270,
+      redirectLink: `/${BASE_URL}/content-page`
+    },
+    {
+      id: 7,
+      image: `/${BASE_URL}/clothes/007.png`,
+      title: "Tatlı Bebek Kıyafeti",
+      price: 200,
+      redirectLink: `/${BASE_URL}/content-page`
+    }
+  ];
+
   return (
-    <div className="kintaro-ui-hero">
-      <div className="hero-main">
-        <KintaroTitle1 title={"🧸 OvaKids'e Hoş Geldin Minik Kahraman!"} textAlign={"center"} />
-        <KintaroDescription
-          textAlign={"center"}
-          text={"Ovakids'in neşeli ve konfor dolu dünyasına adım at! Her yaşa uygun, rengarenk ve yumuşacık kıyafetlerle çocuklar şimdi daha mutlu. Sevgiyle tasarlandı, minik adımlar için özenle hazırlandı!"}
-        />
-        <div className="kwherobtns">
-          <KintaroButton3 title={"Erkek Çocuk"} />
-          <KintaroButton3 title={"Kız Çocuk"} />
-          <KintaroButton3 title={"Erkek Bebek"} />
-          <KintaroButton3 title={"Kız Çocuk"} />
-          <KintaroButton3 title={"Çocuk Takım"} />
-          <KintaroButton3 title={"Bayan Çanta"} />
-          <KintaroButton3 title={"Aksesuar"} />
+    <div>
+      <Hero />
+      <KintaroDivider1 />
+
+      <div className='kintaro-explore'>
+
+        <div className="kintaro-explore-head">
+          <KintaroTitle1 title={"En Sevilen Parçalar"} />
+          <KintaroDescription text={"Miniklerin en sevdiği parçalar burada! Rahatlık ve şıklığı bir arada sunan favori ürünleri keşfet."} textAlign={"center"} />
         </div>
+
+        <div className="kintaro-content-box-1-container" ref={contentsRef}>
+
+          {contents.length === 0 ? (
+
+            <KintaroDescription text={"Keşfedilecek içerik yok."} maxLength={"999"} showToggleButton={false} />
+
+          ) : (
+
+            contents.map((content) => (
+
+              <KintaroContentBox1 key={content.id} content={content} />
+
+            ))
+          )}
+
+        </div>
+
       </div>
 
-      <img src={mascot} alt="mascot" className="hero-overlay-mascot" />
 
-      {/* Mini Images */}
-      <img src={hero1} alt="decorative" className="hero-overlay-mini-image hero1" />
-      <img src={hero2} alt="decorative" className="hero-overlay-mini-image hero2" />
-      <img src={hero3} alt="decorative" className="hero-overlay-mini-image hero3" />
-
-      {/* Background Overlay */}
-      <div className="hero-overlay"></div>
-
-      <div className="scroll-down-container">
-        <p className="scroll-down-text">Scroll Down</p>
-        <div className="scroll-down-arrow">
-          <div className="scroll-down-dot"></div>
-        </div>
-      </div>
 
     </div>
   )

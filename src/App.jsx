@@ -11,6 +11,8 @@ import {
 } from 'kintaro-ui/src';
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { FaInstagram, FaPhone, FaTiktok } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
 
 import './App.css'
 
@@ -59,11 +61,60 @@ function App() {
 
 
 
+        <KintaroFooter
+          title="Ovakids"
+          description="Hizmetlerimiz, ve bizim hakkında daha fazla bilgi edinin."
+          copyrightText="© 2025 Ovakids Tüm Hakları Saklıdır."
+          sections={[
+            {
+              title: "Services",
+              links: [
+                { text: "Web Development", url: "" },
+                { text: "Mobile Applications", url: "" },
+                { text: "UI/UX Design", url: "" },
+                { text: "Cloud Hosting", url: "" }
+              ]
+            },
+            {
+              title: "Resources",
+              links: [
+                { text: "Documentation", url: "" },
+                { text: "API Reference", url: "" },
+                { text: "Developer Tools", url: "" },
+                { text: "Code Samples", url: "" }
+              ]
+            },
+            {
+              title: "Company",
+              links: [
+                { text: "About Us", url: "" },
+                { text: "Careers", url: "" },
+                { text: "Press & Media", url: "" },
+                { text: "Partners", url: "" }
+              ]
+            },
+            {
+              title: "Support",
+              links: [
+                { text: "Help Center", url: "" },
+                { text: "Community Forum", url: "" },
+                { text: "Status Page", url: "" },
+                { text: "Contact Support", url: "" }
+              ]
+            }
+          ]}
+          socialIcons={[
+            { icon: <FaInstagram />, url: "https://www.instagram.com/ovakids1/" },
+            { icon: <FaTiktok />, url: "https://tiktok.com" },
+            { icon: <FaPhone />, url: "tel:+905519625760" },
+            { icon: <IoIosMail />, url: "mailto:contact@example.com" },
+          ]}
+        />
 
       </div>
 
     </Router>
   )
 }
-{/*`/${BASE_URL}/`*/ }
+
 export default App

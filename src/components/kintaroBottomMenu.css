@@ -14,7 +14,7 @@
         justify-content: space-around;
         align-items: center;
         background: var(--kintaro-color-1-transparent);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(5px);
         padding: 0 var(--kintaro-gap-sm);
         z-index: var(--navbar-z-index);
         height: var(--navbar-height);
