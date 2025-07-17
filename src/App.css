@@ -43,7 +43,6 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    gap: var(--kintaro-gap-sm);
     width: 100%;
     height: 100%;
     min-height: 100dvh;
@@ -51,26 +50,26 @@ body {
 
 
 @media (max-width: 768px) {
-    .kintaro-container{
+    .kintaro-container {
         padding-bottom: var(--navbar-height);
     }
+
     .kintaro-xahzy {
         min-height: calc(100vh - calc(var(--navbar-height) * 2));
     }
 }
 
 .kintaro-explore {
-    padding: var(--kintaro-gap-md);
+    padding: 100px var(--kintaro-gap-md);
     gap: var(--kintaro-gap-lg);
     display: flex;
     flex-direction: column;
-     
     background-image: url(/1.png);
-    background-size:  cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     min-height: 60vh;
-    padding: 100px 0;
+    align-items: center;
 }
 
 .kintaro-explore-head {
@@ -79,4 +78,213 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+/*******************/
+
+.kintaro-about {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--kintaro-gap-lg);
+    align-items: center;
+    justify-content: center;
+    padding: 100px var(--kintaro-gap-md);
+    min-height: 60vh;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.1), rgb(0, 0, 0, 0.5));
+    position: relative;
+}
+
+.kintaro-about::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+    background: linear-gradient(to top, var(--kintaro-color-2), transparent);
+    pointer-events: none;
+}
+
+.kintaro-about-elements {
+    display: flex;
+    flex-direction: column;
+    gap: var(--kintaro-gap-sm);
+    max-width: 700px;
+    flex: 1;
+}
+
+.kintaro-about-image {
+    max-width: 300px;
+    aspect-ratio: 1/1;
+}
+
+@media (max-width: 768px) {
+    .kintaro-about {
+        flex-direction: column;
+    }
+
+    .kintaro-about-elements {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .kintaro-about-image {
+        max-width: 150px;
+    }
+}
+
+.kintaro-more-contents-container {
+    padding: 100px var(--kintaro-gap-md);
+    gap: var(--kintaro-gap-lg);
+    display: flex;
+    min-height: 60vh;
+    align-items: center;
+    justify-content: center;
+    background-image: url(/cuts-effect.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.kintaro-more-contents-container-elements {
+    display: flex;
+    flex-direction: column;
+    gap: var(--kintaro-gap-sm);
+    flex: 1;
+}
+
+
+.special-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: float 3s ease-in-out infinite;
+    scale: 1.2;
+}
+
+.button-image-mayushii {
+    width: 200px;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+
+}
+
+.special-button {
+    border-radius: var(--kintaro-border-radius-1);
+    font-size: var(--kintaro-font-md);
+    transition: all 0.4s ease;
+    color: var(--kintaro-text-color-1);
+    font-weight: var(--kintaro-font-weight);
+    text-shadow: var(--kintaro-text-shadow);
+    gap: var(--kintaro-gap-xs);
+    width: fit-content;
+    background: var(--kintaro-color-2);
+    user-select: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    /* Continuous colorful glow animation */
+    animation: rainbow-glow 4s ease-in-out infinite alternate;
+
+    /* Inner shine effect */
+    box-shadow:
+        0 0 10px rgba(255, 255, 255, 0.8),
+        inset 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.special-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            rgba(255, 0, 0, 0.1) 0%,
+            rgba(255, 165, 0, 0.1) 20%,
+            rgba(255, 255, 0, 0.1) 40%,
+            rgba(0, 128, 0, 0.1) 60%,
+            rgba(0, 0, 255, 0.1) 80%,
+            rgba(128, 0, 128, 0.1) 100%);
+    transform: rotate(45deg);
+    z-index: -1;
+    opacity: 0.5;
+    animation: shine 3s linear infinite;
+}
+
+.special-button:hover {
+    transform: translateY(-3px);
+    animation: none;
+    box-shadow:
+        0 5px 15px rgba(255, 0, 0, 0.4),
+        0 5px 30px rgba(255, 165, 0, 0.4),
+        0 5px 45px rgba(255, 255, 0, 0.4);
+}
+
+.special-button:hover::before {
+    animation: shine 0.5s linear infinite;
+    opacity: 0.8;
+}
+
+.special-button:active {
+    transform: translateY(1px);
+}
+
+/* Animations */
+@keyframes rainbow-glow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+    }
+
+    20% {
+        box-shadow: 0 0 15px rgba(255, 165, 0, 0.6);
+    }
+
+    40% {
+        box-shadow: 0 0 20px rgba(255, 255, 0, 0.6);
+    }
+
+    60% {
+        box-shadow: 0 0 15px rgba(0, 128, 0, 0.6);
+    }
+
+    80% {
+        box-shadow: 0 0 10px rgba(0, 0, 255, 0.6);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(128, 0, 128, 0.6);
+    }
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+        top: -100%;
+    }
+
+    100% {
+        left: 100%;
+        top: 100%;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }

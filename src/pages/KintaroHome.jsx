@@ -12,7 +12,10 @@ import {
 import Hero from '../components/KintaroHero'
 
 import { KintaroContentBox1 } from "../components/KintaroContentBox";
-
+import Logo from '/ovakidslogo.png'
+import Mayushii from '/mayushii.png'
+import CutsEffectOverlay from '/cuts-effect.png'
+import { FaArrowRight } from "react-icons/fa";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 
@@ -100,6 +103,31 @@ function KintaroHome() {
           )}
 
         </div>
+      </div>
+
+      <KintaroDivider1 />
+
+      <div className="kintaro-more-contents-container">
+        <div className="special-button-container">
+          <img src={Mayushii} alt="Mayushii" className="button-image-mayushii" />
+          <a href="" className="special-button">Tüm Ürünleri Gör <FaArrowRight /> </a>
+        </div>
+      </div>
+
+      <KintaroDivider1 />
+
+      <div className="kintaro-about">
+
+        <div className="kintaro-about-elements">
+          <KintaroTitle1 title={"💖 OvaKids Hakkında"} />
+          <KintaroDescription
+            textAlignMobile={"center"}
+            text={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."}
+          />
+          <KintaroButton2 title={"Daha Fazlasını Gör"} />
+        </div>
+
+        <img src={Logo} alt="ovakids logo" className="kintaro-about-image" />
 
       </div>
 

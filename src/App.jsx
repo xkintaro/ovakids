@@ -14,6 +14,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { FaInstagram, FaPhone, FaTiktok } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 
+
 import './App.css'
 
 import Navbar from './components/KintaroNavbar'
