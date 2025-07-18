@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 import { FiSearch, FiArrowLeft } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
+import { useNavigate, useSearchParams } from "react-router-dom"; // Added useSearchParams
 import './kintaroNavbarSearch.css'
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 function KintaroNavbarSearch() {
     const [searchTerm, setSearchTerm] = useState("");
     const [isFocused, setIsFocused] = useState(false);
     const [overlayActive, setOverlayActive] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams(); // Get current search params
 
     useEffect(() => {
         const handleResize = () => {
@@ -19,21 +25,35 @@ function KintaroNavbarSearch() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    const handleChange = (e) => {
-        setSearchTerm(e.target.value);
-    };
+    const handleChange = (e) => setSearchTerm(e.target.value);
 
-    const clearSearch = () => {
-        setSearchTerm("");
-    };
+    const clearSearch = () => setSearchTerm("");
 
-    const openOverlay = () => {
-        setOverlayActive(true);
-    };
+    const openOverlay = () => setOverlayActive(true);
 
     const closeOverlay = () => {
         setOverlayActive(false);
         setSearchTerm("");
+    };
+
+    const handleSearch = () => {
+        if (searchTerm.trim()) {
+            // Create new URLSearchParams to preserve existing params
+            const newSearchParams = new URLSearchParams(searchParams);
+            newSearchParams.set("search", encodeURIComponent(searchTerm.trim()));
+            
+            // Remove search param if empty (clean URL)
+            if (!searchTerm.trim()) {
+                newSearchParams.delete("search");
+            }
+            
+            navigate(`/${BASE_URL}/products?${newSearchParams.toString()}`);
+            closeOverlay();
+        }
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") handleSearch();
     };
 
     const renderSearchBar = () => (
@@ -51,6 +71,7 @@ function KintaroNavbarSearch() {
                 onChange={handleChange}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
+                onKeyDown={handleKeyDown}
                 autoFocus={isMobile && overlayActive}
             />
             {searchTerm && (
@@ -58,7 +79,7 @@ function KintaroNavbarSearch() {
                     <IoMdClose />
                 </button>
             )}
-            <button className="kintaro-search-button">
+            <button className="kintaro-search-button" onClick={handleSearch}>
                 <FiSearch />
             </button>
         </div>

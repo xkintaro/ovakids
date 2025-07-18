@@ -9,7 +9,7 @@ import {
   KintaroDescription, KintaroModal, KintaroFooter,
   KintaroDivider1, KintaroAudioPlayer
 } from 'kintaro-ui/src';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { FaInstagram, FaPhone, FaTiktok } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
@@ -24,6 +24,7 @@ import NotFoundPage from './pages/KintaroNotFound'
 import UnderConstructionPage from './pages/KintarouUnderConstruction'
 import Home from './pages/KintaroHome'
 import About from './pages/KintaroAbout'
+import Products from './pages/KintaroProducts'
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -42,6 +43,21 @@ const ScrollToTop = () => {
 
 function App() {
 
+  const [footerLinks, setFooterLinks] = useState([]);
+
+  useEffect(() => {
+    fetch(`/${BASE_URL}/routes.json`)
+      .then(res => res.json())
+      .then(data => {
+        const links = data.map(item => ({
+          text: item.title,
+          url: `/${BASE_URL}/${item.url}`
+        }));
+        setFooterLinks(links);
+      })
+      .catch(err => console.error("Footer rotaları yüklenemedi:", err));
+  }, []);
+
   return (
     <Router>
 
@@ -56,6 +72,7 @@ function App() {
           <Route path={`/${BASE_URL}/`} element={<Home />} />
           <Route path={`/${BASE_URL}/home`} element={<Home />} />
           <Route path={`/${BASE_URL}/about`} element={<About />} />
+          <Route path={`/${BASE_URL}/products`} element={<Products />} />
           <Route path={`/${BASE_URL}/under-construction`} element={<UnderConstructionPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
@@ -68,13 +85,8 @@ function App() {
           copyrightText="© 2025 Ovakids Tüm Hakları Saklıdır."
           sections={[
             {
-              title: "Services",
-              links: [
-                { text: "Web Development", url: "" },
-                { text: "Mobile Applications", url: "" },
-                { text: "UI/UX Design", url: "" },
-                { text: "Cloud Hosting", url: "" }
-              ]
+              title: "OvaKids",
+              links: footerLinks
             },
             {
               title: "Resources",
@@ -106,7 +118,7 @@ function App() {
           ]}
           socialIcons={[
             { icon: <FaInstagram />, url: "https://www.instagram.com/ovakids1/" },
-            { icon: <FaTiktok />, url: "https://tiktok.com" },
+            { icon: <FaTiktok />, url: "https://www.tiktok.com/@ovakids1" },
             { icon: <FaPhone />, url: "tel:+905519625760" },
             { icon: <IoIosMail />, url: "mailto:contact@example.com" },
           ]}

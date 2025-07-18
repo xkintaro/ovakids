@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 import {
   KintaroTitle1, KintaroTitle2, KintaroTitle3,
@@ -16,66 +16,34 @@ import KintaroComments from "../components/KintaroComments";
 
 import Logo from '/ovakidslogo.png'
 import Mayushii from '/mayushii.png'
- 
+
 import { FaArrowRight } from "react-icons/fa";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 
 function KintaroHome() {
 
-  const contentsRef = useRef(null);
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  const contents = [
-    {
-      id: 1,
-      image: `/${BASE_URL}/clothes/001.png`,
-      title: "Tatlı Ayıcıklı Çocuk Kıyafeti",
-      price: 400,
-      redirectLink: `/${BASE_URL}/content-page`
-    },
-    {
-      id: 2,
-      image: `/${BASE_URL}/clothes/002.png`,
-      title: "Dinazorlu Çocuk Kıyafeti",
-      price: 300,
-      redirectLink: `/${BASE_URL}/content-page`
-    },
-    {
-      id: 3,
-      image: `/${BASE_URL}/clothes/003.png`,
-      title: "Renkli Arabalı Çocuk Kıyafeti",
-      price: 280,
-      redirectLink: `/${BASE_URL}/content-page`
-    },
-    {
-      id: 4,
-      image: `/${BASE_URL}/clothes/004.png`,
-      title: "Bebek Filli Çocuk Kıyafeti",
-      price: 360,
-      redirectLink: `/${BASE_URL}/content-page`
-    },
-    {
-      id: 5,
-      image: `/${BASE_URL}/clothes/005.png`,
-      title: "Sevimli Bereli Çocuk Kıyafeti",
-      price: 410,
-      redirectLink: `/${BASE_URL}/content-page`
-    },
-    {
-      id: 6,
-      image: `/${BASE_URL}/clothes/006.png`,
-      title: "Ayıkıcılı Rahat Çocuk Kıyafeti",
-      price: 270,
-      redirectLink: `/${BASE_URL}/content-page`
-    },
-    {
-      id: 7,
-      image: `/${BASE_URL}/clothes/007.png`,
-      title: "Tatlı Bebek Kıyafeti",
-      price: 200,
-      redirectLink: `/${BASE_URL}/content-page`
-    }
-  ];
+  useEffect(() => {
+    fetch(`/${BASE_URL}/data/products.json`)
+      .then(res => res.json())
+      .then(data => setProducts(data))
+      .catch(err => console.error("products.json yüklenemedi:", err));
+
+    fetch(`/${BASE_URL}/data/categories.json`)
+      .then(res => res.json())
+      .then(data => setCategories(data))
+      .catch(err => console.error("categories.json yüklenemedi:", err));
+  }, []);
+
+  const getCategoryTitles = (category_ids) => {
+    return category_ids
+      .map(id => categories.find(cat => cat.id === id)?.title)
+      .filter(Boolean)
+      .join(', ');
+  };
 
   return (
     <div>
@@ -89,22 +57,24 @@ function KintaroHome() {
           <KintaroDescription text={"Miniklerin en sevdiği parçalar burada! Rahatlık ve şıklığı bir arada sunan favori ürünleri keşfet."} textAlign={"center"} />
         </div>
 
-        <div className="kintaro-content-box-1-container" ref={contentsRef}>
-
-          {contents.length === 0 ? (
-
-            <KintaroDescription text={"Keşfedilecek içerik yok."} maxLength={"999"} showToggleButton={false} />
-
+        <div className="kintaro-content-box-1-container">
+          {products.length === 0 ? (
+            <p>Yükleniyor...</p>
           ) : (
-
-            contents.map((content) => (
-
-              <KintaroContentBox1 key={content.id} content={content} />
-
+            products.map(product => (
+              <KintaroContentBox1
+                key={product.id}
+                content={{
+                  ...product,
+                  // İstersen açıklamayı kısaltabilir ya da kategori isimlerini ekleyebilirsin
+                  categoriesText: getCategoryTitles(product.category_ids),
+                  image: product.image.startsWith('http') ? product.image : product.image.replace('base/', `/${BASE_URL}/`)
+                }}
+              />
             ))
           )}
-
         </div>
+
       </div>
 
       <KintaroDivider1 />
@@ -112,7 +82,7 @@ function KintaroHome() {
       <div className="kintaro-more-contents-container">
         <div className="special-button-container">
           <img src={Mayushii} alt="Mayushii" className="button-image-mayushii" />
-          <a href="" className="special-button">Tüm Ürünleri Gör <FaArrowRight /> </a>
+          <a href={`/${BASE_URL}/products`} className="special-button">Tüm Ürünleri Gör <FaArrowRight /> </a>
         </div>
       </div>
 
@@ -124,7 +94,7 @@ function KintaroHome() {
           <KintaroTitle1 title={"💖 OvaKids Hakkında"} />
           <KintaroDescription
             textAlignMobile={"center"}
-            text={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."}
+            text={"Ovakids, çocuklar ve bebekler için özenle seçilmiş kıyafetler, aksesuarlar ve sevimli ürünleri bir araya getirmek için açılmış küçük ama çok sevgi dolu bir girişimdir. Her ürün, kendi çocuğumuza alacakmışız gibi düşünülerek seçilir. Kaliteli, rahat ve şık parçaları uygun fiyatlarla sunmak önceliğimizdir. Büyük bir marka ya da mağaza değiliz; sadece bu işe gönül vermiş biri olarak, ihtiyacınıza yönelik en tatlı ürünleri bir araya getirmeye çalışıyoruz."}
           />
           <KintaroButton2 title={"Daha Fazlasını Gör"} />
         </div>

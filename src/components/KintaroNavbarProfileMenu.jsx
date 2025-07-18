@@ -4,16 +4,27 @@ import { FaHome, FaFolder, FaPhone } from "react-icons/fa";
 import { MdWavingHand } from "react-icons/md";
 
 import './kintaroNavbarProfileMenu.css';
-import routes from '../routes.json';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function KintaroNavbarProfileMenu() {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
+    const [routes, setRoutes] = useState([]);
     const profileRef = useRef(null);
     const menuRef = useRef(null);
 
     const handleToggleMenu = () => setIsMenuVisible(!isMenuVisible);
+
+    useEffect(() => {
+        // routes.json dosyasını fetch ile al
+        fetch(`/${BASE_URL}/routes.json`)
+            .then((res) => {
+                if (!res.ok) throw new Error("routes.json yüklenemedi.");
+                return res.json();
+            })
+            .then((data) => setRoutes(data))
+            .catch((err) => console.error("Hata:", err));
+    }, []);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -34,7 +45,6 @@ function KintaroNavbarProfileMenu() {
         };
     }, []);
 
-    // Sabit ikonlar: sıralamaya göre routes.json’dakiyle eşleşir
     const staticIcons = [<FaHome />, <MdWavingHand />, <FaFolder />, <FaPhone />];
 
     const menuItems = routes.map((item, index) => ({

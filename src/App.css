@@ -305,3 +305,25 @@
     align-items: center;
     justify-content: center;
 }
+
+
+
+/******************/
+.not-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--kintaro-gap-sm);
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+.not-content-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: var(--kintaro-box-shadow);
+    object-fit: cover;
+}

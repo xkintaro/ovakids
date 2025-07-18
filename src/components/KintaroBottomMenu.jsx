@@ -4,18 +4,26 @@ import { FaHome, FaFolder, FaPhone, FaEllipsisH } from "react-icons/fa";
 import { MdWavingHand } from "react-icons/md";
 
 import './kintaroBottommenu.css';
-import routes from '../routes.json';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function KintaroBottomMenu() {
     const location = useLocation();
     const [showMoreMenu, setShowMoreMenu] = useState(false);
+    const [routes, setRoutes] = useState([]);
     const moreButtonRef = useRef(null);
     const menuRef = useRef(null);
 
-    // Sabit ikonlar (sıralamaya göre eşleşiyor)
+    // Sabit ikonlar sıraya göre
     const staticIcons = [<FaHome />, <MdWavingHand />, <FaFolder />, <FaPhone />];
+
+    // JSON dosyasını yükle
+    useEffect(() => {
+        fetch(`/${BASE_URL}/routes.json`)
+            .then(res => res.json())
+            .then(data => setRoutes(data))
+            .catch(err => console.error("routes.json yüklenemedi:", err));
+    }, []);
 
     const menuItems = routes.map((item, index) => ({
         path: `/${BASE_URL}/${item.url}`,
@@ -26,6 +34,7 @@ function KintaroBottomMenu() {
     const visibleItems = menuItems.slice(0, 3);
     const moreItems = menuItems.slice(3);
 
+    // Dışarı tıklanınca kapatma
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (menuRef.current &&
@@ -37,6 +46,7 @@ function KintaroBottomMenu() {
 
         document.addEventListener('mousedown', handleClickOutside);
         document.addEventListener('touchstart', handleClickOutside);
+
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
             document.removeEventListener('touchstart', handleClickOutside);
@@ -65,22 +75,24 @@ function KintaroBottomMenu() {
                 </button>
             )}
 
-            <div
-                className={`kintaro-bottom-more-menu ${showMoreMenu ? 'visible' : ''}`}
-                ref={menuRef}
-            >
-                {moreItems.map((item, i) => (
-                    <Link
-                        key={i}
-                        to={item.path}
-                        className="kintaro-bottom-more-item"
-                        onClick={() => setShowMoreMenu(false)}
-                    >
-                        {item.icon && <span className='kintaro-bottom-more-icon'>{item.icon}</span>}
-                        <span className="kintaro-bottom-more-text">{item.text}</span>
-                    </Link>
-                ))}
-            </div>
+            {moreItems.length > 0 && (
+                <div
+                    className={`kintaro-bottom-more-menu ${showMoreMenu ? 'visible' : ''}`}
+                    ref={menuRef}
+                >
+                    {moreItems.map((item, i) => (
+                        <Link
+                            key={i}
+                            to={item.path}
+                            className="kintaro-bottom-more-item"
+                            onClick={() => setShowMoreMenu(false)}
+                        >
+                            {item.icon && <span className='kintaro-bottom-more-icon'>{item.icon}</span>}
+                            <span className="kintaro-bottom-more-text">{item.text}</span>
+                        </Link>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }

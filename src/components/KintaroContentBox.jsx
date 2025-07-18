@@ -12,8 +12,6 @@ const KintaroContentBox1 = ({ content }) => {
                 className="kintaro-content-box-1-image"
             />
 
-
-
             <div className="kintaro-content-box-1-elements">
                 <p className="kintaro-content-box-1-title">{content.title}</p>
                 <div className="kintaro-price">
@@ -27,6 +25,7 @@ const KintaroContentBox1 = ({ content }) => {
         </Link>
     );
 };
+
 
 
 export { KintaroContentBox1 };
