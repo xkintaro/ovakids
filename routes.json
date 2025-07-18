@@ -1,0 +1,18 @@
+[
+    {
+        "title": "AnaSayfa",
+        "url": "home"
+    },
+    {
+        "title": "Ürünlerimiz",
+        "url": "products"
+    },
+    {
+        "title": "Hakkımızda",
+        "url": "about"
+    },
+    {
+        "title": "İletişim",
+        "url": "under-construction"
+    }
+]
