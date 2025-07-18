@@ -1,0 +1,40 @@
+[
+    {
+        "id": 1,
+        "title": "Tatlı Ayıcıklı Çocuk Kıyafeti",
+        "price": 299.90,
+        "age": "5-7",
+        "description": "Yumuşak kumaşlı, rahat kesimli erkek çocuk sweatshirt. Gündelik kullanım için ideal.",
+        "image": "base/clothes/001.png",
+        "redirectLink": "base/content-page",
+        "category_ids": [
+            1,
+            2
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Dinazorlu Çocuk Kıyafeti",
+        "price": 349.50,
+        "age": "3-5",
+        "description": "Şık ve rahat pamuklu elbise, doğum günleri ve özel günler için mükemmel.",
+        "image": "base/clothes/002.png",
+        "redirectLink": "base/content-page",
+        "category_ids": [
+            3
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Renkli Arabalı Çocuk Kıyafeti",
+        "price": 499.00,
+        "age": "6-8",
+        "description": "Su geçirmez kumaş, içi polar kaplı. Soğuk havalar için uygundur.",
+        "image": "base/clothes/003.png",
+        "redirectLink": "base/content-page",
+        "category_ids": [
+            1,
+            4
+        ]
+    }
+]

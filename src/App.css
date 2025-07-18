@@ -1,5 +1,5 @@
 :root {
-    --navbar-height: 50px;
+    --navbar-height: 60px;
     --navbar-z-index: 900;
 }
 
@@ -78,60 +78,6 @@
 
 /*******************/
 
-.kintaro-about {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--kintaro-gap-lg);
-    align-items: center;
-    justify-content: center;
-    padding: 100px var(--kintaro-gap-md);
-    min-height: 60vh;
-    background-image: url(/2.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
-}
-
-.kintaro-about::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 20vh;
-    background: linear-gradient(to top, var(--kintaro-color-2), transparent);
-    pointer-events: none;
-}
-
-.kintaro-about-elements {
-    display: flex;
-    flex-direction: column;
-    gap: var(--kintaro-gap-sm);
-    max-width: 700px;
-    flex: 1;
-}
-
-.kintaro-about-image {
-    max-width: 300px;
-    aspect-ratio: 1/1;
-}
-
-@media (max-width: 768px) {
-    .kintaro-about {
-        flex-direction: column;
-    }
-
-    .kintaro-about-elements {
-        justify-content: center;
-        align-items: center;
-    }
-
-    .kintaro-about-image {
-        max-width: 150px;
-    }
-}
-
 .kintaro-more-contents-container {
     padding: 100px var(--kintaro-gap-md);
     gap: var(--kintaro-gap-lg);
@@ -148,7 +94,6 @@
     gap: var(--kintaro-gap-sm);
     flex: 1;
 }
-
 
 .special-button-container {
     display: flex;
@@ -186,11 +131,7 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
-
-    /* Continuous colorful glow animation */
     animation: rainbow-glow 4s ease-in-out infinite alternate;
-
-    /* Inner shine effect */
     box-shadow:
         0 0 10px rgba(255, 255, 255, 0.8),
         inset 0 0 10px rgba(255, 255, 255, 0.4);
@@ -285,45 +226,47 @@
     }
 }
 
-.kintaro-comments {
-    padding: 100px var(--kintaro-gap-md);
-    gap: var(--kintaro-gap-lg);
-    display: flex;
-    flex-direction: column;
-    background-image: url(/1.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 60vh;
-    align-items: center;
-}
+/* Arama çubuğu stilleri */
 
-.kintaro-comments-head {
+.kintaro-search-bar {
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    padding-left: 14px;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-
-
-/******************/
-.not-content {
-    display: flex;
-    flex-direction: column;
+    max-width: 300px;
     gap: var(--kintaro-gap-sm);
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    left: 0;
+    border: 2px solid var(--kintaro-color-3);
+    box-shadow: var(--kintaro-box-shadow);
 }
 
-.not-content-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    box-shadow: var(--kintaro-box-shadow);
-    object-fit: cover;
+.kintaro-search-bar input {
+    flex: 1;
+    height: 100%;
+    color: var(--kintaro-text-color-1);
+    border: none;
+    outline: none;
+    background: none;
+    font-size: var(--kintaro-font-md);
+    padding: 8px;
+}
+
+.kintaro-search-button {
+    background: var(--kintaro-color-3);
+    color: white;
+    border: none;
+    flex: 1;
+    padding: 10px 16px;
+    height: 100%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--kintaro-transition-1);
+    border-radius: 0 25px 25px 0;
+}
+
+.kintaro-search-button:hover {
+    background: var(--kintaro-hover);
 }

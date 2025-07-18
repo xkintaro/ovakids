@@ -4,8 +4,8 @@
 
 .kintaro-profile-button {
     cursor: pointer;
-    width: 35px;
-    height: 35px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background-color: var(--kintaro-color-3);
     padding: 8px;
@@ -53,4 +53,10 @@
 
 .kintaro-profile-item:hover {
     background: var(--kintaro-hover);
+}
+
+@media (max-width: 768px) {
+    .kintaro-profile {
+        display: none;
+    }
 }

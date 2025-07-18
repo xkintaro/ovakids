@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import './KintaroComments.css';
+import { useRef, useEffect, useState } from 'react';
+
 import {
     KintaroTitle1,
     KintaroDescription

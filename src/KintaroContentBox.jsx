@@ -1,10 +1,7 @@
-import { Link } from 'react-router-dom';
-import { FaStar } from "react-icons/fa";
-import './kintaroContentBox1.css'
 
 const KintaroContentBox1 = ({ content }) => {
     return (
-        <Link key={content.id} className="kintaro-content-box-1" to={content.redirectLink}>
+        <div key={content.id} className="kintaro-content-box-1" >
 
             <img
                 src={content.image}
@@ -22,7 +19,7 @@ const KintaroContentBox1 = ({ content }) => {
                 </div>
             </div>
 
-        </Link>
+        </div>
     );
 };
 
