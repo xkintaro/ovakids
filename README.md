@@ -1,4 +1,4 @@
-## 📷 Demo Links
+## 📷 Demo
 
 - [GitHub Pages](https://xkintaro.github.io/ovakids)
 
