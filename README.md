@@ -1,7 +1,6 @@
 ## 📷 Demo Links
 
 - [GitHub Pages](https://xkintaro.github.io/ovakids)
-- [Vercel](https://ovakids.vercel.app/)
 
 ## 📋 About
 
