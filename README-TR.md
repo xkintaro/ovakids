@@ -1,109 +1,110 @@
 <a href="README.md">
- <img src="https://img.shields.io/badge/Language-English-blue?style=flat-square&logo=google-translate&logoColor=white" alt="English">
+  <img src="https://img.shields.io/badge/Language-English-blue?style=flat-square&logo=google-translate&logoColor=white" alt="English">
 </a>
 <a href="README-TR.md">
- <img src="https://img.shields.io/badge/Dil-Türkçe-red?style=flat-square&logo=google-translate&logoColor=white" alt="Türkçe">
+  <img src="https://img.shields.io/badge/Language-Türkçe-red?style=flat-square&logo=google-translate&logoColor=white" alt="Türkçe">
 </a>
 
   <br />
   <br />
 
 <div align="center">
-  <img src="public/md/kintaro-logo.png" width="120" height="120" />
+  <img src="public/ovakidslogo.webp" width="120" height="120" />
   <br />
   <br />
 
   <p>
-    OvaKids, Çocuklar ve Bebekler için Kıyafetler, Aksesuarlar ve Ürünlerin sergilendiği bir Websitesi
+     Çocuk ve bebek giyimi ile aksesuarları için bir vitrin sitesi.
   </p>
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
   <p>
+    <a href="#demo">Demo</a> •
+    <a href="#about">Hakkında</a> •
     <a href="#features">Özellikler</a> •
-    <a href="#technologies">Teknolojiler</a> •
-    <a href="#installation">Kurulum</a> •
-    <a href="#license">Lisans</a> •
-    <a href="#gallery">Galeri</a>
+    <a href="#tech">Teknolojiler</a> •
+    <a href="#setup">Kurulum</a> •
+    <a href="#gallery">Galeri</a> •
+    <a href="#license">Lisans</a>
   </p>
 
   <br />
   <br />
 </div>
 
-## 📷 Demo Link
+## <a id="demo"></a> 📷 Demo
 
 - [https://xkintaro.github.io/ovakids/](https://xkintaro.github.io/ovakids/)
 
-## 📋 Hakkında
+## <a id="about"></a> 📋 Hakkında
 
-Bu web sitesini komşum için tek günde hızlı bir demo olarak hazırlamıştım. Proje daha sonra devam etmedi, ancak ileride lazım olabilir diye kaybolmaması için burada arşiv olarak paylaşıyorum.
+**OvaKids**, çocuk ve bebek giyimi ile aksesuarları satan bir mağaza için hazırlanmış bir vitrin sitesidir. Bu siteyi bir komşumun mağazası için hızlı bir demo olarak tek günde hazırladım. Proje sonrasında devam etmedi, bu yüzden burada arşiv olarak tutuyorum.
 
-## ✨ Özellikler <a id="features"></a>
+Site, öne çıkan ürünleri ana sayfada listeler ve ziyaretçilerin tüm kataloğa kategoriye göre ya da arama yaparak göz atmasını sağlar. Ürün, kategori ve yorum verileri `public/data` klasöründeki JSON dosyalarından okunur. Böylece içerik koda dokunmadan değiştirilebilir. Arayüz Türkçedir.
 
-- **Dinamik Ürün Katalogu**: Ürünlerin kategorilerine göre filtrelenebildiği geniş bir liste.
-- **Gelişmiş Arama**: Ürün başlığı ve açıklamasında gerçek zamanlı arama yapabilme.
-- **Mobil Uyumlu**: Tüm cihazlarda sorunsuz çalışan tasarım ve mobil özel alt menü.
+## <a id="features"></a> ✨ Özellikler
 
-## 🛠️ Teknolojiler <a id="technologies"></a>
+- **Öne çıkan ürünler**: Seçilen ürünler ana sayfada gösterilir.
+- **Kategori filtresi**: Kataloğa erkek çocuk, kız çocuk, erkek bebek, kız bebek, kadın çanta ve aksesuar gibi kategorilere göre göz atın.
+- **Anlık arama**: Yazdıkça ürün başlıkları ve açıklamaları arasında arama yapın.
+- **Müşteri yorumları**: Müşteri yorumlarını yıldızlı puanlarıyla birlikte okuyun.
+- **Mobil menü**: Küçük ekranlarda alt menü, ana sayfaya, ürünlere ve hakkında bölümüne hızlı erişim sağlar.
 
-Bu proje aşağıdaki modern teknolojiler kullanılarak geliştirilmiştir:
+## <a id="tech"></a> 🛠️ Teknolojiler
 
-- **React 19**: Kullanıcı arayüzü bileşenleri.
-- **Vite**: Yüksek performanslı geliştirme ve build aracı.
-- **Vanilla CSS**: Özel tasarım butonlar ve bileşenler.
-- **React Icons**: Arayüz için Modern ikonlar.
-- **Kintaro UI**: Kendi yaptığım bileşen kütüphanesi.
+`React` · `Vite` · `CSS` · `React Icons` · `Kintaro UI`
 
-## 🚀 Kurulum <a id="installation"></a>
+## <a id="setup"></a> 🚀 Kurulum
 
-Projeyi yerel bilgisayarınızda çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
+### Gereksinimler
 
-1. **Depoyu Klonlayın:**
+- **Node.js**
+
+### Adım Adım Kurulum
+
+1. **Depoyu klonlayın**
 
    ```bash
    git clone https://github.com/xkintaro/ovakids.git
    cd ovakids
    ```
 
-2. **Bağımlılıkları Yükleyin:**
+2. **Bağımlılıkları yükleyin**
 
    ```bash
    npm install
    ```
 
-3. **Geliştirme Sunucusunu Başlatın:**
+   Windows'ta bunun yerine `install-dependencies.bat` dosyasını çalıştırabilirsiniz.
+
+3. **Geliştirme sunucusunu başlatın**
+
    ```bash
    npm run dev
    ```
-   Tarayıcınızda `http://localhost:5173` adresine giderek projeyi görüntüleyebilirsiniz.
 
-## 📄 Lisans <a id="license"></a>
+   Windows'ta bunun yerine `run.bat` dosyasını çalıştırabilirsiniz.
 
-Bu proje MIT Lisansı altında lisanslanmıştır. Ayrıntılar için [LICENSE](LICENSE) dosyasını inceleyebilirsiniz.
+Uygulamayı şu adreste açın: [http://localhost:5173/ovakids/](http://localhost:5173/ovakids/).
 
-## 🖼️ Galeri <a id="gallery"></a>
+## <a id="gallery"></a> 🖼️ Galeri
 
-<img src="public/md/20260310131950796.jpg" width="auto"  />
+<img src="public/md/20260310131950522.jpg" width="100%" />
 
-#
+<img src="public/md/20260310131950620.jpg" width="100%" />
 
-<img src="public/md/20260310131950461.jpg" width="auto"  />
+<img src="public/md/20260310131950708.jpg" width="100%" />
 
-#
+<img src="public/md/20260310131950796.jpg" width="49%" />
+<img src="public/md/20260310131950461.jpg" width="49%" />
 
-<img src="public/md/20260310131950620.jpg" width="auto"  />
+## <a id="license"></a> 📄 Lisans
 
-#
-
-<img src="public/md/20260310131950522.jpg" width="auto"  />
-
-#
-
-<img src="public/md/20260310131950708.jpg" width="auto"  />
+Bu proje MIT Lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakabilirsiniz.
 
 #
 
