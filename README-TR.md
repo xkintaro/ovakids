@@ -99,8 +99,7 @@ Uygulamayı şu adreste açın: [http://localhost:5173/ovakids/](http://localhos
 
 <img src="public/md/20260310131950708.jpg" width="100%" />
 
-<img src="public/md/20260310131950796.jpg" width="49%" />
-<img src="public/md/20260310131950461.jpg" width="49%" />
+<p align="center"><img src="public/md/20260310131950796.jpg" width="48%" /><img src="public/md/20260310131950461.jpg" width="48%" /></p>
 
 ## <a id="license"></a> 📄 Lisans
 
